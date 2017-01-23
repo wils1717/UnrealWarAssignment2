@@ -7,14 +7,17 @@ package unrealwar.assignment2;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.json.simple.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 /**
  *
  * @author c0533886
  */
 public class Course extends Student {
 
-    List<Student> students = new ArrayList<>();
+    private List<Student> students;
 
     public Course() {
         students = new ArrayList<>();
@@ -26,8 +29,8 @@ public class Course extends Student {
 
     }
 
-    public void add(Student student) {
-
+    public void add(Student s) {
+        students.add(s);
     }
 
     public void remove(Student student) {
@@ -46,37 +49,45 @@ public class Course extends Student {
 
     }
 
-    public void get(String id) {
-
+    public Student get(String id) {
+        for (Student s : students) {
+            if (s.getId().equals(id)) {
+                return s;
+            }
+        }
+        return null;
     }
 
-    public void get(int position) {
-
+    public Student get(int position) {
+        return students.get(position);
     }
 
-    public void getAll() {
-
-    }
+//    public Student getAll() {
+//        
+//       
+//    }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
             Student s = (Student) obj;
-            return (s.getId().equals(id)); 
+            return (s.getId().equals(id));
         } else {
             return false;
         }
     }
 
-     @Override
+    @Override
     public String toString() {
-        JSONObject json = new JSONObject();
-        json.put("name", name);
-        json.put("id", id);
-        json.put("gender", gender);
-        json.put("grade", grade);
-        return json.toJSONString();
+        JsonArray jsonArray = new JsonArray();
+        JsonParser parser = new JsonParser();
+        for (Student s : students) {
+            JsonElement jsonObj = parser.parse(s.toString());
+            jsonArray.add(jsonObj);
+        }
+        return jsonArray.toString();
     }
+
     public void getAllbyGender(String gender) {
 
     }
