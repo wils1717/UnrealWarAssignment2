@@ -1,18 +1,21 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package unrealwar.assignment2;
+import org.json.simple.JSONObject;
 /**
  *
  * @author c0533886
  */
-public class Student {
-    String name;
-    String id;
-    String gender;
-    double grade;
+public abstract class Student {
+    protected String name;
+    protected String id;
+    protected String gender;
+    protected double grade;
     
     public Student() {
         this.name = " ";
@@ -20,7 +23,13 @@ public class Student {
         this.gender = " ";
         this.grade = 0;
     }
-
+    
+    public Student(String name, String id, String gender, double grade) {
+        this.name = name;
+        this.id = id;
+        this.gender = gender;
+        this.grade = grade;
+    }
     public String getName() {
         return name;
     }
@@ -60,5 +69,15 @@ public class Student {
         }
         
         else return false;
+    }
+       
+    @Override
+       public String toString() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("id", id);
+        json.put("gender", gender);
+        json.put("grade", grade);
+        return json.toJSONString();
     }
 }

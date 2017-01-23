@@ -5,17 +5,24 @@
  */
 package unrealwar.assignment2;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.json.simple.JSONObject;
 /**
  *
  * @author c0533886
  */
-public class Course {
+public class Course extends Student {
+
+    List<Student> students = new ArrayList<>();
 
     public Course() {
-
+        students = new ArrayList<>();
     }
 
-    public Course(String name) {
+    public Course(List<Student> students) {
+
+        this.students = students;
 
     }
 
@@ -55,28 +62,21 @@ public class Course {
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
             Student s = (Student) obj;
-            return (s.getId().equals()); //FIX
+            return (s.getId().equals(id)); 
         } else {
             return false;
         }
     }
 
-    /* @Override
+     @Override
     public String toString() {
         JSONObject json = new JSONObject();
-        json.put("weightCapacity", weightCapacity);
-        json.put("productId", productId);
         json.put("name", name);
-        json.put("width", width);
-        json.put("length", length);
-        json.put("description", description);
-        json.put("stockQuantity", stockQuantity);
-        json.put("packageQuantity", packageQuantity);
-        json.put("warehouse", warehouse);
-        json.put("stockPrice", stockPrice);
-        json.put("height", height);
+        json.put("id", id);
+        json.put("gender", gender);
+        json.put("grade", grade);
         return json.toJSONString();
-    } */
+    }
     public void getAllbyGender(String gender) {
 
     }
