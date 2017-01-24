@@ -17,152 +17,71 @@ import static org.junit.Assert.*;
  * @author c0687799
  */
 public class StudentTest {
-    
+
     public StudentTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of getName method, of class Student.
-     */
     @Test
-    public void testGetName() {
-        System.out.println("getName");
+    public void testName() {
+        System.out.println("name");
         Student instance = new Student();
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        
-    }
-
-    /**
-     * Test of setName method, of class Student.
-     */
-    @Test
-    public void testSetName() {
-        System.out.println("setName");
-        String name = "";
-        Student instance = new Student();
-        instance.setName(name);
-        
-    }
-
-    /**
-     * Test of getId method, of class Student.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        Student instance = new Student();
-        String expResult = "";
+        String expResult = "Bob";
+        instance.setId(expResult);
         String result = instance.getId();
         assertEquals(expResult, result);
-        
     }
 
-    /**
-     * Test of setId method, of class Student.
-     */
     @Test
-    public void testSetId() {
-        System.out.println("setId");
-        String id = "";
+    public void testId() {
+        System.out.println("getId");
         Student instance = new Student();
-        instance.setId(id);
-        
+        String expResult = "abc3421";
+        instance.setId(expResult);
+        String result = instance.getId();
+        assertEquals(expResult, result);
+
     }
 
-    /**
-     * Test of getGender method, of class Student.
-     */
     @Test
-    public void testGetGender() {
+    public void testGender() {
         System.out.println("getGender");
         Student instance = new Student();
-        String expResult = "";
+        String expResult = "Male";
+        instance.setGender(expResult);
         String result = instance.getGender();
         assertEquals(expResult, result);
-        
+
     }
 
-    /**
-     * Test of setGender method, of class Student.
-     */
-    @Test
-    public void testSetGender() {
-        System.out.println("setGender");
-        String gender = "";
-        Student instance = new Student();
-        instance.setGender(gender);
-        
-    }
-
-    /**
-     * Test of getGrade method, of class Student.
-     */
-    @Test
-    public void testGetGrade() {
-        System.out.println("getGrade");
-        Student instance = new Student();
-        double expResult = 0.0;
-        double result = instance.getGrade();
-        assertEquals(expResult, result, 0.0);
-        
-    }
-
-    /**
-     * Test of setGrade method, of class Student.
-     */
-    @Test
-    public void testSetGrade() {
-        System.out.println("setGrade");
-        double grade = 0.0;
-        Student instance = new Student();
-        instance.setGrade(grade);
-        
-    }
-
-    /**
-     * Test of equals method, of class Student.
-     */
-    @Test
+    /*@Test
     public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        Student instance = new Student();
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        
-    }
+    System.out.println("equals");
+    Object obj = null;
+    Student instance = new Student();
+    boolean expResult = false;
+    boolean result = instance.equals(obj);
+    assertEquals(expResult, result);
+    
+    }*/
 
-    /**
-     * Test of toString method, of class Student.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Student instance = new Student();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        
-    }
+    
+
     @Test
     public void testEmptyConstructor() {
         System.out.println("Student(...)");
@@ -170,14 +89,15 @@ public class StudentTest {
         String id = "";
         String gender = "";
         double grade = 0;
-        
-        Student instance = new Student(name, id, gender, grade);
+
+        Student instance = new Student();
         assertEquals(name, instance.getName());
         assertEquals(id, instance.getId());
         assertEquals(gender, instance.getGender());
         assertEquals(grade, instance.getGrade(), 0.001);
-        
+
     }
+
     @Test
     public void testFullConstructor() {
         System.out.println("Student(...)");
@@ -185,14 +105,76 @@ public class StudentTest {
         String id = "abc3421";
         String gender = "Male";
         double grade = 90;
-        
+
         Student instance = new Student(name, id, gender, grade);
         assertEquals(name, instance.getName());
         assertEquals(id, instance.getId());
         assertEquals(gender, instance.getGender());
         assertEquals(grade, instance.getGrade(), 0.001);
-    }    
-    
-    
+    }
 
+    @Test
+    public void testNullNotEqual() {
+        System.out.println("Student Object Comparision(...)");
+        Student instance = new Student();
+        assertFalse(instance.equals(null));
+
+    }
+
+    @Test
+    public void testEqual() {
+        System.out.println("Student Object Comparision(...)");
+        String name = "Bob";
+        String id = "abc3421";
+        Student instance = new Student();
+        instance.setName(name);
+        instance.setId(id);
+        Student instance2 = new Student();
+        instance2.setName(name);
+        instance2.setId(id);
+        assertEquals(instance, instance2);
+    }
+
+    @Test
+    public void testSameNameDifferentIdIsNotEqual() {
+        String name = "Bob";
+        String id = "abc1234";
+        String id2 = "cba1234";
+        Student instance = new Student();
+        instance.setName(name);
+        instance.setId(id);
+        Student instance2 = new Student();
+        instance2.setName(name);
+        instance2.setId(id2);
+        assertNotEquals(instance, instance2);
+    }
+
+    @Test
+    public void testDifferentNameSameIdIsNotEqual() {
+        String name = "Bob";
+        String name2 = "Obopeieirp";
+        String id = "abc3421";
+        Student instance = new Student();
+        instance.setName(name);
+        instance.setId(id);
+        Student instance2 = new Student();
+        instance2.setName(name2);
+        instance2.setId(id);
+        assertNotEquals(instance, instance2);
+    }
+
+    @Test
+    public void testDifferentNameDifferentIdIsNotEqual() {
+        String name = "Bob";
+        String name2 = "Obo";
+        String id = "abc3421";
+        String id2 = "cba1234";
+        Student instance = new Student();
+        instance.setName(name);
+        instance.setId(id);
+        Student instance2 = new Student();
+        instance2.setName(name2);
+        instance2.setId(id2);
+        assertNotEquals(instance, instance2);
+    }
 }
