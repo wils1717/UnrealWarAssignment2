@@ -15,11 +15,11 @@ import org.json.simple.parser.ParseException;
  *
  * @author c0533886
  */
-public abstract class Student {
-    protected String name;
-    protected String id;
-    protected String gender;
-    protected double grade;
+public class Student {
+     String name;
+     String id;
+     String gender;
+     double grade;
     
     public Student() {
         this.name = " ";
