@@ -173,7 +173,21 @@ public class StudentTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    @Test
+    public void testEmptyConstructor() {
+        System.out.println("Student(...)");
+        String name = "";
+        String id = "";
+        String gender = "";
+        double grade = 0;
+        
+        Student instance = new Student(name, id, gender, grade);
+        assertEquals(name, instance.getName());
+        assertEquals(id, instance.getId());
+        assertEquals(gender, instance.getGender());
+        assertEquals(grade, instance.getGrade(), 0.001);
+        
+    }
     @Test
     public void testFullConstructor() {
         System.out.println("Student(...)");
@@ -188,4 +202,7 @@ public class StudentTest {
         assertEquals(gender, instance.getGender());
         assertEquals(grade, instance.getGrade(), 0.001);
     }    
+    
+    
+
 }
