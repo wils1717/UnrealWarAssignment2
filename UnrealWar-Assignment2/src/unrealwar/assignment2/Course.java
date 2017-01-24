@@ -15,7 +15,7 @@ import com.google.gson.JsonParser;
  *
  * @author c0533886
  */
-public class Course extends Student {
+public class Course {
 
     private List<Student> students;
 
@@ -71,7 +71,7 @@ public class Course extends Student {
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
             Student s = (Student) obj;
-            return (s.getId().equals(id));
+            return (s.getId().equals(s.id));
         } else {
             return false;
         }
