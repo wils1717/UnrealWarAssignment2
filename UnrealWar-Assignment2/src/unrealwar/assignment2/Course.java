@@ -11,6 +11,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 /**
  *
  * @author c0533886
@@ -33,20 +36,26 @@ public class Course {
         students.add(s);
     }
 
-    public void remove(Student student) {
-
+    public void remove(Student s) {
+        students.remove(s);
     }
 
     public void remove(String id) {
-
+        for(Student s : students) {
+            if(s.getId().equals(id)) {
+                students.remove(id);
+            }
+        }
+        
     }
 
     public void remove(int position) {
-
+        students.remove(position);
     }
 
-    public void insert(Student student, int position) {
 
+    public void insert(Student s, int position) {
+        students.set(position, s);
     }
 
     public Student get(String id) {
@@ -62,10 +71,11 @@ public class Course {
         return students.get(position);
     }
 
-//    public Student getAll() {
-//        
-//       
-//    }
+    public List<Student> getAll() {
+         
+      return students;
+      
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -88,11 +98,17 @@ public class Course {
         return jsonArray.toString();
     }
 
-    public void getAllbyGender(String gender) {
-
+    public Student getAllbyGender(String gender) {
+        for (Student s : students){
+            if (s.getGender().equals(gender)){
+                return s;
+            }
+        }
+        return null;
     }
 
     public void getGradeMap() {
-
+//        Map<String,Set<Student>> students = new TreeMap<>();
+//        return ;
     }
 }
