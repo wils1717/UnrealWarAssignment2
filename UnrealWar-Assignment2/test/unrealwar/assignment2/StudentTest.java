@@ -201,13 +201,13 @@ public class StudentTest {
         try {
             System.out.println("toString");
             Student instance = new Student();
-            instance.setName("Steve");
-            instance.setId("13");
+            instance.setName("Bill Smith");
+            instance.setId("c0123456");
             instance.setGender("male");
-            instance.setGrade(250);
+            instance.setGrade(89.3);
             String jsonString = instance.toString();
             JSONObject result = (JSONObject) new JSONParser().parse(jsonString);
-            JSONObject expResult = (JSONObject) new JSONParser().parse("{\"name\":\"Steve\",\"id\":\"13\",\"gender\":\"male\",\"grade\":250.0}");
+            JSONObject expResult = (JSONObject) new JSONParser().parse("{\"name\":\"Bill Smith\",\"id\":\"c0123456\",\"gender\":\"male\",\"grade\":89.3}");
             assertEquals(expResult, result);
         } catch (ParseException ex) {
             System.err.println("Invalid JSON Format");
