@@ -41,11 +41,10 @@ public class StudentTest {
     }
 
     @Test
-    public void testName() {
+    public void testGetName() {
         System.out.println("name");
-        Student instance = new Student();
+        Student instance = new Student("Bob", "", "", 0);
         String expResult = "Bob";
-        instance.setName(expResult);
         String result = instance.getName();
         assertEquals(expResult, result);
     }
@@ -56,15 +55,16 @@ public class StudentTest {
         String name = "Noob";
         Student instance = new Student();
         instance.setName(name);
+        String expResult = instance.getName();
+        assertEquals(expResult, name);
 
     }
 
     @Test
-    public void testId() {
+    public void testGetId() {
         System.out.println("getId");
-        Student instance = new Student();
+        Student instance = new Student("", "abc3421", "", 0);
         String expResult = "abc3421";
-        instance.setId(expResult);
         String result = instance.getId();
         assertEquals(expResult, result);
 
@@ -76,15 +76,18 @@ public class StudentTest {
         String id = "2";
         Student instance = new Student();
         instance.setId(id);
+        String expResult = instance.getId();
+        assertEquals(expResult, id);
 
     }
 
     @Test
-    public void testGender() {
+    public void testGetGender() {
         System.out.println("getGender");
-        Student instance = new Student();
+        Student instance = new Student("", "", "Male", 0);
+
         String expResult = "Male";
-        instance.setGender(expResult);
+
         String result = instance.getGender();
         assertEquals(expResult, result);
 
@@ -96,15 +99,18 @@ public class StudentTest {
         String gender = "Male";
         Student instance = new Student();
         instance.setGender(gender);
+        String expResult = instance.getGender();
+        assertEquals(expResult, gender);
 
     }
 
     @Test
-    public void testGrade() {
+    public void testGetGrade() {
         System.out.println("getGrade");
-        Student instance = new Student();
+        Student instance = new Student("", "", "", 93.1);
+
         Double expResult = 93.1;
-        instance.setGrade(expResult);
+
         Double result = instance.getGrade();
         assertEquals(expResult, result);
 
@@ -113,11 +119,12 @@ public class StudentTest {
     @Test
     public void testSetGrade() {
         System.out.println("setGrade");
-        double grade = 0.0;
+        Double grade = 0.0;
         Student instance = new Student();
         instance.setGrade(grade);
+        Double expResult = instance.getGrade();
+        assertEquals(expResult, grade);
     }
-
 
     @Test
     public void testEmptyConstructor() {
@@ -150,15 +157,9 @@ public class StudentTest {
         assertEquals(grade, instance.getGrade(), 0.001);
     }
 
-//    @Test
-//    public void testNullNotEqual() {
-//        System.out.println("Student Object Comparision(...)");
-//        Student instance = new Student();
-//        assertFalse(instance.equals(null));
-// 
-//    }
+
     @Test
-    public void testEqual() {
+    public void testNullisNotEqual() {
         System.out.println("equals");
         Object obj = null;
         Student instance = new Student();
@@ -166,19 +167,6 @@ public class StudentTest {
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
     }
-//    @Test
-//    public void testEqual() {
-//        System.out.println("Student Object Comparision(...)");
-//        String name = "Bob";
-//        String id = "abc3421";
-//        Student instance = new Student();
-//        instance.setName(name);
-//        instance.setId(id);
-//        Student instance2 = new Student();
-//        instance2.setName(name);
-//        instance2.setId(id);
-//        assertEquals(instance, instance2);
-//    }
 
     @Test
     public void testEqualsSameNameSameId() {
@@ -186,12 +174,7 @@ public class StudentTest {
         boolean result = false;
         Student obj = new Student("Noob", "2", "Male", 0.0);
         Student instance = new Student("Noob", "2", "Male", 0.0);
-        boolean expResult = true;
-        if (instance.getName().equals(obj.getName()) && instance.getId().equals(obj.getId())) {
-            result = true;
-
-        }
-        assertEquals(expResult, result);
+        assertEquals(obj, instance);
 
     }
 
