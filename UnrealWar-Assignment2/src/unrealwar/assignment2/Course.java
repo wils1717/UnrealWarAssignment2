@@ -54,7 +54,7 @@ public class Course {
     }
 
     public void insert(Student s, int position) {
-        students.set(position, s);
+        students.add(position, s);
     }
 
     public Student get(String id) {
