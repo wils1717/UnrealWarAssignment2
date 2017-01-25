@@ -49,7 +49,16 @@ public class StudentTest {
         String result = instance.getId();
         assertEquals(expResult, result);
     }
-
+    
+    @Test
+    public void testNullName() {
+        System.out.println("name");
+        Student instance = new Student();
+        String expResult = "Bob";
+        instance.setId(expResult);
+        String result = instance.getId();
+        assertEquals(expResult, result);
+    }
     @Test
     public void testId() {
         System.out.println("getId");
@@ -72,6 +81,16 @@ public class StudentTest {
 
     }
 
+    @Test
+    public void testGrade() {
+        System.out.println("getGrade");
+        Student instance = new Student();
+        Double expResult = 93.1;
+        instance.setGrade(expResult);
+        String result = instance.getGender();
+        assertEquals(expResult, result);
+
+    }
     @Test
     public void testEquals() {
         System.out.println("equals");
