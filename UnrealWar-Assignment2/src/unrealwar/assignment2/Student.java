@@ -34,6 +34,7 @@ public class Student {
         this.gender = gender;
         this.grade = grade;
     }
+    
     public String getName() {
         return name;
     }
@@ -65,13 +66,13 @@ public class Student {
     public void setGrade(double grade) {
         this.grade = grade;
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
             Student s = (Student) obj;
             return (s.getId().equals(id)) && (s.getName().equals(name));
         }
-        
         else return false;
     }
        

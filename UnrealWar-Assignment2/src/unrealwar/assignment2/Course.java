@@ -29,9 +29,7 @@ public class Course {
     }
 
     public Course(List<Student> students) {
-
         this.students = students;
-
     }
 
     public void add(Student s) {
@@ -49,7 +47,6 @@ public class Course {
                 students.remove(i);
             }
         }
-
     }
 
     public void remove(int position) {
@@ -78,9 +75,7 @@ public class Course {
     }
 
     public List<Student> getAll() {
-
         return students;
-
     }
 
     public boolean equals(ArrayList<Object> list1, ArrayList<Object> list2) {
@@ -90,7 +85,6 @@ public class Course {
         if ((list1 == null && list2 != null) || (list1 != null && list2 == null)) {
             return false;
         }
-
         if (list1.size() != list2.size()) {
             return false;
         }
@@ -99,7 +93,6 @@ public class Course {
                 return false;
             }
         }
-
         return true;
     }
 

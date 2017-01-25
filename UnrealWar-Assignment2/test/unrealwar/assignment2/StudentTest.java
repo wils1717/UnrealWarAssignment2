@@ -5,6 +5,9 @@
  */
 package unrealwar.assignment2;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -69,18 +72,15 @@ public class StudentTest {
 
     }
 
-    /*@Test
+    @Test
     public void testEquals() {
-    System.out.println("equals");
-    Object obj = null;
-    Student instance = new Student();
-    boolean expResult = false;
-    boolean result = instance.equals(obj);
-    assertEquals(expResult, result);
-    
-    }*/
-
-    
+        System.out.println("equals");
+        Object obj = null;
+        Student instance = new Student();
+        boolean expResult = false;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+    }
 
     @Test
     public void testEmptyConstructor() {
@@ -176,5 +176,23 @@ public class StudentTest {
         instance2.setName(name2);
         instance2.setId(id2);
         assertNotEquals(instance, instance2);
+    }
+    @Test
+    public void testToString() {
+        try {
+            System.out.println("toString");
+            Student instance = new Student();
+            instance.setName("Steve");
+            instance.setId("13");
+            instance.setGender("male");
+            instance.setGrade(250);
+            String jsonString = instance.toString();
+            JSONObject result = (JSONObject) new JSONParser().parse(jsonString);
+            JSONObject expResult = (JSONObject) new JSONParser().parse("{\"name\":\"Steve\",\"id\":\"13\",\"gender\":\"male\",\"grade\":250.0}");
+            assertEquals(expResult, result);
+        } catch (ParseException ex) {
+            System.err.println("Invalid JSON Format");
+            fail("Invalid JSON Format");
+        }
     }
 }
