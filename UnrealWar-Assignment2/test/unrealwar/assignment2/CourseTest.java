@@ -48,7 +48,15 @@ public class CourseTest {
     @After
     public void tearDown() {
     }
-
+       
+    @Test
+    public void TestNoArgConstructor() {
+    Course instance = new Course();
+    List<Student> expResult = new ArrayList<>();
+    List<Student> result = instance.getAll();   
+    assertEquals(expResult, result);
+    }
+    
     @Test
     public void testGetAllWithArg() {
         System.out.println("testGetAllWithArg");
@@ -227,8 +235,8 @@ public class CourseTest {
     @Test
     public void testCanGetStudentFromList() {
         Course instance = new Course(studentList);
-        Student result = instance.get("ABC555");
-        Student expResult = new Student("Bob", "ABC555", "male", 60);
+        Student result = instance.get("ABC123");
+        Student expResult = new Student("Bob", "ABC123", "Male", 60);
         assertEquals(expResult, result);
     }
 
