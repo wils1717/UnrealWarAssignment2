@@ -83,14 +83,24 @@ public class Course {
 
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Student) {
-            Student s = (Student) obj;
-            return (s.getId().equals(s.id));
-        } else {
+    public boolean equals(ArrayList<Object> list1, ArrayList<Object> list2) {
+        if (list1 == null && list2 == null) {
+            return true;
+        }
+        if ((list1 == null && list2 != null) || (list1 != null && list2 == null)) {
             return false;
         }
+
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+        for (Object itemList1 : list1) {
+            if (!list2.contains(itemList1)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
@@ -114,13 +124,13 @@ public class Course {
     }
 
     public Map<String, Set<Student>> getGradeMap() {
-        Map<String, Set<Student>> s = new HashMap<String, Set<Student>>();
+        Map<String, Set<Student>> s = new HashMap<>();
 
-        Set<Student> studentA = new HashSet<Student>();
-        Set<Student> studentB = new HashSet<Student>();
-        Set<Student> studentC = new HashSet<Student>();
-        Set<Student> studentD = new HashSet<Student>();
-        Set<Student> studentE = new HashSet<Student>();
+        Set<Student> studentA = new HashSet<>();
+        Set<Student> studentB = new HashSet<>();
+        Set<Student> studentC = new HashSet<>();
+        Set<Student> studentD = new HashSet<>();
+        Set<Student> studentE = new HashSet<>();
 
         for (int x = 0; x < students.size(); x++) {
             if (students.get(x).getGrade() < 1) {

@@ -69,7 +69,7 @@ public class Student {
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
             Student s = (Student) obj;
-            return (s.getId().equals(id));
+            return (s.getId().equals(id)) && (s.getName().equals(name));
         }
         
         else return false;
