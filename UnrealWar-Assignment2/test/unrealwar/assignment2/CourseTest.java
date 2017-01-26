@@ -89,24 +89,26 @@ public class CourseTest {
     @Test
     public void testRemove_Student() {
         System.out.println("remove");
-        Student student = null;
+        Student student = new Student("Bob", "ABC123", "Male", 65);
+        List<Student> expResult = new ArrayList<>();
+        expResult.remove(student);
         Course instance = new Course();
         instance.remove(student);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Student> result = instance.getAll();
+        assertEquals(expResult, result);
     }
-
     /**
      * Test of remove method, of class Course.
      */
     @Test
     public void testRemove_String() {
-        System.out.println("remove");
+        System.out.println("remove");   
         String id = "";
+        Student result = new Student("Bob", id, "Male", 65);
         Course instance = new Course();
         instance.remove(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean found = instance.getAll().contains("ABC123");
+        assertFalse(found);
     }
 
     /**
