@@ -48,15 +48,15 @@ public class CourseTest {
     @After
     public void tearDown() {
     }
-       
+
     @Test
     public void TestNoArgConstructor() {
-    Course instance = new Course();
-    List<Student> expResult = new ArrayList<>();
-    List<Student> result = instance.getAll();   
-    assertEquals(expResult, result);
+        Course instance = new Course();
+        List<Student> expResult = new ArrayList<>();
+        List<Student> result = instance.getAll();
+        assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testGetAllWithArg() {
         System.out.println("testGetAllWithArg");
@@ -97,18 +97,24 @@ public class CourseTest {
         List<Student> result = instance.getAll();
         assertEquals(expResult, result);
     }
+
     /**
      * Test of remove method, of class Course.
      */
     @Test
     public void testRemove_String() {
-        System.out.println("remove");   
-        String id = "";
-        Student result = new Student("Bob", id, "Male", 65);
+        System.out.println("remove");
+        String id = "222";
         Course instance = new Course();
         instance.remove(id);
-        boolean found = instance.getAll().contains("ABC123");
-        assertFalse(found);
+//        System.out.println("remove");   
+//        String id = "2";
+//        Student result = new Student("Bob", id, "Male", 65);
+//        List<Student> expResult = new ArrayList<>();
+//        Course instance = new Course();
+//        instance.remove(id);
+//        List<Student> r = instance.getAll();
+//        assertEquals(expResult, instance.result);
     }
 
     /**
@@ -120,8 +126,7 @@ public class CourseTest {
         int position = 0;
         Course instance = new Course();
         instance.remove(position);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -152,8 +157,7 @@ public class CourseTest {
         Student expResult = null;
         Student result = instance.get(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -163,12 +167,44 @@ public class CourseTest {
     public void testGet_int() {
         System.out.println("get");
         int position = 0;
-        Course instance = new Course();
-        Student expResult = null;
-        Student result = instance.get(position);
+        List<Student> s = new ArrayList<Student>();
+        s.add(new Student("Bob", "ABC123", "Male", 65));
+        Course instance = new Course(s);
+        String expResult = "{\"name\":\"Bob\",\"id\":\"ABC123\",\"gender\":\"Male\",\"grade\":65}";
+        String result = instance.get(position).toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+    }
+
+    @Test
+    public void testGetNull() {
+        try {
+            System.out.println("testGetNull");
+            List<Student> s = new ArrayList<Student>();
+            s.add(new Student("Bob", "ABC123", "Male", 65));
+            Course instance = new Course(s);
+            String expResult = null;
+            String result = instance.get("ABC123").toString();
+            assertEquals(expResult, result);
+        } catch (NullPointerException x) {
+
+        }
+    }
+
+    @Test
+    public void testGetWrongPosLessThanZero() {
+        try {
+            System.out.println("testGetWrongPosLessThanZero");
+            int position = -1;
+            List<Student> s = new ArrayList<Student>();
+            s.add(new Student("Bob", "ABC123", "Male", 65));
+            Course instance = new Course(s);
+            String expResult = null;
+            String result = instance.get(position).toString();
+            assertEquals(expResult, result);
+        } catch (NullPointerException x) {
+
+        }
     }
 
     /**
@@ -182,8 +218,7 @@ public class CourseTest {
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
